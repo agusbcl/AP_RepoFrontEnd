@@ -1,1 +1,20 @@
-<img src="../../../../assets/APlogo.png" id="logoAP">
+<div class="row">
+    <div class="container">
+        <div class="logo">
+            <img src="../../../../assets/APlogo.png" id="logoAP">
+        </div>
+
+        <div class="rrss">
+            <div>
+
+                <a href=""><img src="../../../assets/github.png" id="github"></a>
+                <a href=""><img src="../../../assets/lkdlin.png" id="linkedin"></a>
+                <a href=""><img src="../../../assets/ig.png" id="instagram"></a>
+                <button type="button" class="btn btn-outline-light btn-sm" (click)="login()" *ngIf="!isLogged">Login</button>
+                <button type="button" class="btn btn-outline-light btn-sm" (click)="onLogOut()" *ngIf="isLogged">Logout</button>
+
+            </div>
+        </div>
+    </div>
+
+</div>

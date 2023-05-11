@@ -1,0 +1,14 @@
+.row{
+    background-color: #F8F7F2;
+    margin: 20px;
+    padding: 15px;
+}
+
+.container{
+    width: auto;
+}
+
+.firstPart, .secondPart{
+    display: inline-block;
+    text-align: justify;
+}
