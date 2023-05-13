@@ -1,36 +1,41 @@
 <div class="row">
 
     <h3>Education</h3>
-
-    <div class="col-lg-12">
-
-        <ul>
-            <li><h3>Institución 1</h3></li>
-            <h6 class="date">date</h6>
-            <p>descripción</p>
-        </ul>
-
-    </div>
-
-    <div class="col-lg-12">
-
-        <ul>
-            <li><h3>Institución 2</h3></li>
-            <h6 class="date">date</h6>
-            <p>descripción</p>
-        </ul>
-
-    </div>
-
-    <div class="col-lg-12">
-
-        <ul>
-            <li><h3>Institución 3</h3></li>
-            <h6 class="date">date</h6>
-            <p>descripción</p>
-        </ul>
-
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-dark" routerLink="/addeducation" *ngIf="isLogged">
+            Add education
+        </button>
     </div>
 
 
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <table class="table">
+
+            <tbody>
+                <tr *ngFor="let Education of education">
+
+                    <!-- Education name -->
+                    <td>
+                        <h5>{{Education.eduName}}</h5>
+                    </td>
+
+                    <!-- Education description -->
+                    <td>{{Education.eduDescription}}</td>
+
+                    <!-- Edit Education -->
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-outline-link btn-sm"
+                            routerLink="/editeducation/{{Education.id}}">
+                            <i class="bi bi-pencil-square"></i></button>
+                    </td>
+
+                    <!-- Delete Education -->
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-outline-link btn-sm" (click)="deleteEducation(Education.id)">
+                            <i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

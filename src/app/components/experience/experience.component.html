@@ -1,40 +1,41 @@
 <div class="row">
 
     <h3>Job experience</h3>
-
-    <div class="col-lg-12">
-
-        <ul>
-            <li><h3>Obra Social del Personal de Dirección de Industria Metalúrgica y Actividades
-                Empresarias</h3></li>
-            <li>Supervisora - Administración de Cartera de Afiliados y Empresas</li>
-            <h6 class="date">octubre 2017 - presente</h6>
-            <p>descripción de tareas</p>
-        </ul>
-
-    </div>
-
-    <div class="col-lg-12">
-
-        <ul>
-            <li><h3>Obra Social de Encargados Apuntadores Marítimos</h3></li>
-            <li>Administrativo semi sr. - Oficina de padrón y Afiliaciones</li>
-            <h6 class="date">julio 2015 - septiembre 2017</h6>
-            <p>descripción de tareas</p>
-        </ul>
-
-    </div>
-
-    <div class="col-lg-12">
-
-        <ul>
-            <li><h3>Servicios y Prestaciones Médicas S.R.L.</h3></li>
-            <li>Secretaria - Departamento de Enfermería</li>
-            <h6 class="date">Septiembre 2013 - Junio 2015</h6>
-            <p>descripción de tareas</p>
-        </ul>
-
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-dark" routerLink="/newexperience" *ngIf="isLogged">
+            Add job experience
+        </button>
     </div>
 
 
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <table class="table">
+
+            <tbody>
+                <tr *ngFor="let JobExperience of jobExperience">
+
+                    <!-- Job name -->
+                    <td>
+                        <h5>{{JobExperience.jobName}}</h5>
+                    </td>
+
+                    <!-- Job description -->
+                    <td>{{JobExperience.jobDescription}}</td>
+
+                    <!-- Edit job experience -->
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-outline-link btn-sm"
+                            routerLink="/editjobexperience/{{JobExperience.id}}">
+                            <i class="bi bi-pencil-square"></i></button>
+                    </td>
+
+                    <!-- Delete job experience -->
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-outline-link btn-sm" (click)="deleteJobExperience(JobExperience.id)">
+                            <i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
