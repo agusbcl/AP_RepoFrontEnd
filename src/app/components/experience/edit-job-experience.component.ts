@@ -24,7 +24,7 @@ export class EditJobExperienceComponent implements OnInit {
         this.jobExp = data;
       },
       error: (err) => {
-        alert("Job experience edit failed");
+        alert("Job experience showing failed");
         this.router.navigate(['']);
       }
     });

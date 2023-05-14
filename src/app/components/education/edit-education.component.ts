@@ -26,7 +26,7 @@ export class EditEducationComponent implements OnInit{
       },
       error: (err) => {
         console.log(err);
-        alert("Education get failed");
+        alert("Education showing failed");
         this.router.navigate(['']);
       }
     });
