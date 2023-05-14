@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { person } from 'src/app/model/person.model';
+import { Person } from 'src/app/model/person.model';
 import { PersonService } from 'src/app/service/person.service';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-about',
@@ -8,11 +9,25 @@ import { PersonService } from 'src/app/service/person.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent {
-  person: person = new person("", "", "");
+  person: Person;
 
-  constructor(public personService: PersonService) { }
+  constructor( public personService: PersonService, private tokenService: TokenService) { }
+  isLogged = false;
 
   ngOnInit(): void {
-    this.personService.getPerson().subscribe(data => { this.person = data });
+    this.getPerson();
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+  }
+
+  getPerson(){
+    this.personService.detail(1).subscribe(
+      data => {
+        this.person = data;
+      }
+    )
   }
 }
