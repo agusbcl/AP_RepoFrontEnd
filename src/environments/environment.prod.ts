@@ -9,5 +9,5 @@ export const environment = {
     messagingSenderId: '330964820803',
   },
     production: true,
-    URL: 'https://aprepobackend-production.up.railway.app'
+    URL: 'https://backendab-opn0.onrender.com'
 };
