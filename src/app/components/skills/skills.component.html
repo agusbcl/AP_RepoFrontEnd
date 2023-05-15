@@ -1,9 +1,11 @@
 <div class="row">
 
-    <h3>Hard skills and Soft skills</h3>
 
-    <div class="col-lg-2">
-        <button type="button" routerLink="/addskill" class="btn btn-dark" *ngIf="isLogged">Add Skill</button>
+    <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h3>Hard skills and Soft skills</h3>        
+        <button class="btn btn-outline-link btn-sm" routerLink="/addskill"
+            *ngIf="isLogged"><i class="bi bi-plus-circle-fill"></i>
+        </button>
     </div>
 
     <div class="text-center col-sm-4 col-md-4 col-lg-4 circle" *ngFor="let skill of skill">

@@ -1,14 +1,54 @@
 <div class="row">
-    <h3>My projects</h3>
-    <div class="container">
-        <div class="col-sm-12 col-md-7 col-lg-7 firstPart">
-            <h3>Project 1</h3>
-            <p>Project description</p>
-        </div>
-        <div class="col-sm-12 col-md-3 col-lg-3 offset-md-1 offset-lg-1 secondPart">
-            <img src="../../../assets/projectPicture.png" id="projectPicture" class="img-fluid img-proyector">
-        </div>
 
+    <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h3>My projects</h3>
+        <button class="btn btn-outline-link btn-sm" routerLink="/addproject" *ngIf="isLogged"><i
+                class="bi bi-plus-circle-fill"></i>
+        </button>
     </div>
 
+    <div>
+        <table class="table">
+
+            <tbody>
+                <tr *ngFor="let Project of project">
+
+                    <!-- Project name -->
+                    <td class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <h5>{{Project.projectName}}</h5>
+                    </td>
+
+                    <!-- Project description -->
+                    <td class="col-xs-10 col-sm-5 col-md-5 col-lg-5">{{Project.projectDescription}}</td>
+
+                    <!-- <div class="col-sm-12 col-md-3 col-lg-3 offset-md-1 offset-lg-1 secondPart">
+                        <img src="{{Project.img}}" id="projectPicture"
+                            class="img-fluid img-proyector">
+                    </div> -->
+
+                    <td class="col-xs-8 col-sm-2 col-md-2 col-lg-2">
+                        <a href="{{Project.url}}" target="_blank" rel="noopener noreferrer">
+                            <button type="button" class="btn btn-dark btn-sm">
+                                <i class="bi bi-link"></i>
+                            </button>
+                        </a>
+
+                    </td>
+
+
+                    <!-- Edit project -->
+                    <td class="col-xs-8 col-sm-1 col-md-1 col-lg-1" *ngIf="isLogged">
+                        <button class="btn btn-outline-link btn-sm" routerLink="/editproject/{{Project.id}}">
+                            <i class="bi bi-pencil-square"></i></button>
+                    </td>
+
+                    <!-- Delete project -->
+                    <td class="col-xs-8 col-sm-1 col-md-1 col-lg-1" *ngIf="isLogged">
+                        <button class="btn btn-outline-link btn-sm" (click)="deleteProject(Project.id)">
+                            <i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from 'src/app/model/person.model';
 import { ImageService } from 'src/app/service/image.service';
 import { PersonService } from 'src/app/service/person.service';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-edit-about',
@@ -16,11 +17,16 @@ export class EditAboutComponent implements OnInit {
   constructor(private personService: PersonService, 
     private activatedRoute: ActivatedRoute, 
     private router: Router,
-    private imageService: ImageService){
+    public imageService: ImageService,
+    private tokenService: TokenService){
 
   }
 
   ngOnInit(): void {
+    if (!this.tokenService.getToken()) {
+      this.router.navigate(['']);
+    }
+
     const id = this.activatedRoute.snapshot.params['id'];
     this.personService.detail(id).subscribe({
       next: (data) => {
@@ -36,6 +42,7 @@ export class EditAboutComponent implements OnInit {
 
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params['id'];
+    this.person.img = this.imageService.url;
     this.personService.update(id, this.person).subscribe({
       next: (data) => {
         alert("Person edited successfully");
@@ -49,6 +56,8 @@ export class EditAboutComponent implements OnInit {
   }
 
   uploadImage($event:any){
-    this.imageService.uploadImage($event);
+    const id = this.activatedRoute.snapshot.params['id'];
+    const name = "profile_" + id;
+    this.imageService.uploadImage($event, name);
   }
 }

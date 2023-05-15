@@ -1,11 +1,20 @@
 .row {
     padding: 15px;
-    
+    margin: 15px;
+    background-color: white;
+    justify-content: space-around;
+    align-items: center;
 }
 
+
 div {
-    background-color: #F8F7F2;
+    background-color: white;
     text-align: center;
+}
+
+.container{
+    align-items: center;
+    word-wrap:break-word;
 }
 
 /* Profile picture style */
@@ -16,6 +25,7 @@ div {
         width: 100%;
         left: auto;
         margin-bottom: 0px;
+        margin-top: 15px;
     }
 }
 
@@ -31,5 +41,6 @@ div {
 
 #name {
     font-weight: bold;
-    margin-top: 30%;
+    margin-bottom: 0%;
+    font-size: large;
 }

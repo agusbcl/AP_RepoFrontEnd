@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Skill } from 'src/app/model/skill';
 import { SkillService } from 'src/app/service/skill.service';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-add-skill',
@@ -13,12 +14,14 @@ export class AddSkillComponent implements OnInit{
   skillName: string;
   percent: number;
 
-  constructor(private skillService: SkillService, private router: Router){
+  constructor(private skillService: SkillService, private router: Router, private tokenService: TokenService){
 
   }
 
   ngOnInit(): void {
-    
+    if (!this.tokenService.getToken()) {
+      this.router.navigate(['']);
+    }
   }
 
   onCreate(): void {

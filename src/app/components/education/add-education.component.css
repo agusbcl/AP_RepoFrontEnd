@@ -1,0 +1,10 @@
+.buttons {
+    margin: 20px;
+    display: flex;
+    justify-content: end;
+    align-items:end;
+}
+
+.form-group{
+    margin: 20px;
+}

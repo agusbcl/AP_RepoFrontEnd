@@ -1,14 +1,12 @@
 .row{
-    background-color: #F8F7F2;
-    margin: 20px;
     padding: 15px;
+    margin: 15px;
+    background-color: white;
 }
 
-.container{
-    width: auto;
-}
-
-.firstPart, .secondPart{
-    display: inline-block;
-    text-align: justify;
-}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    }

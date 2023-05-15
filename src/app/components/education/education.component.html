@@ -1,36 +1,44 @@
 <div class="row">
 
-    <h3>Education</h3>
-    <div class="col-lg-2">
-        <button type="button" class="btn btn-dark" routerLink="/addeducation" *ngIf="isLogged">
-            Add education
+    <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h3>Education</h3>        
+        <button class="btn btn-outline-link btn-sm" routerLink="/addeducation"
+            *ngIf="isLogged"><i class="bi bi-plus-circle-fill"></i>
         </button>
     </div>
 
 
-    <div class="col-lg-12 col-md-12 col-sm-12">
+    <div>
         <table class="table">
 
             <tbody>
                 <tr *ngFor="let Education of education">
 
                     <!-- Education name -->
-                    <td>
-                        <h5>{{Education.eduName}}</h5>
+                    <td class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                        <p>{{Education.eduName}}</p>
                     </td>
 
+                    <!-- Start Date -->
+                    <td class="col-xs-5 col-sm-1 col-md-1 col-lg-1">{{Education.startDate | date}}</td>
+
+                    <!-- End Date -->
+                    <td class="col-xs-5 col-sm-1 col-md-1 col-lg-1">{{Education.endDate | date}}</td>                    
+
                     <!-- Education description -->
-                    <td>{{Education.eduDescription}}</td>
+                    <td class="col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <p>{{Education.eduDescription}}</p>
+                    </td>
 
                     <!-- Edit Education -->
-                    <td *ngIf="isLogged">
+                    <td class="col-xs-8 col-sm-1 col-md-1 col-lg-1" *ngIf="isLogged">
                         <button class="btn btn-outline-link btn-sm"
                             routerLink="/editeducation/{{Education.id}}">
                             <i class="bi bi-pencil-square"></i></button>
                     </td>
 
                     <!-- Delete Education -->
-                    <td *ngIf="isLogged">
+                    <td class="col-xs-8 col-sm-1 col-md-1 col-lg-1" *ngIf="isLogged">
                         <button class="btn btn-outline-link btn-sm" (click)="deleteEducation(Education.id)">
                             <i class="bi bi-trash"></i></button>
                     </td>

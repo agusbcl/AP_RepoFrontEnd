@@ -1,8 +1,15 @@
 .row{
-    background-color: #F8F7F2;
-    margin: 20px;
     padding: 15px;
+    margin: 15px;
+    background-color: white;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    }
 
 .circle{
     display: flex;

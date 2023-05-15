@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div>
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="projectName">Project name</label>
+                    <input type="text" class="form-control" id="projectName" name="projectName" [(ngModel)]="projectName" required>
+                </div>
+
+                <div class="form-group">
+                    <p for="projectDescription">Project description</p>
+                    <textarea name="description" [(ngModel)]="projectDescription" cols="100" rows="10"
+                        placeholder="Write description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="img">Project URL</label>
+                    <input type="text" class="form-control" id="url" name="url" [(ngModel)]="url">
+                </div>
+
+                <br>
+
+                <div class="buttons">
+                    <button style="margin-right: 10px;" type="submit" class="btn btn-dark btn-sm">Save</button>
+
+                    <a href="#!">
+                        <button type="button" class="btn btn-dark btn-sm"> Cancel </button>
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
