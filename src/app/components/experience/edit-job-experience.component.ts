@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobExperience } from 'src/app/model/job-experience';
+import { DateService } from 'src/app/service/date-service.service';
 import { SJobExperienceService } from 'src/app/service/s-jobExperience.service';
 import { TokenService } from 'src/app/service/token.service';
 
@@ -13,7 +14,8 @@ export class EditJobExperienceComponent implements OnInit {
   jobExp: JobExperience = null;
 
   constructor(private sJobExperience: SJobExperienceService, private activatedRoute: ActivatedRoute,
-    private router: Router, private tokenService: TokenService) {
+    private router: Router, private tokenService: TokenService,
+    private dateService: DateService) {
 
   }
 
@@ -37,6 +39,10 @@ export class EditJobExperienceComponent implements OnInit {
 
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params['id'];
+
+    this.jobExp.startDate = this.dateService.convertDateToUTC(this.jobExp.startDate);
+    this.jobExp.endDate = this.dateService.convertDateToUTC(this.jobExp.endDate);
+
     this.sJobExperience.update(id, this.jobExp).subscribe({
       next: (data) => {
         this.router.navigate(['']);

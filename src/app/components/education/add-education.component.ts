@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Education } from 'src/app/model/education';
+import { DateService } from 'src/app/service/date-service.service';
 import { EducationService } from 'src/app/service/education.service';
 import { TokenService } from 'src/app/service/token.service';
 
@@ -17,7 +18,8 @@ export class AddEducationComponent implements OnInit {
   endDate: Date = null;
   eduDescription: string = '';
 
-  constructor(private educationService: EducationService, private router: Router, private tokenService: TokenService) {
+  constructor(private educationService: EducationService, private router: Router, private tokenService: TokenService,
+    private dateService: DateService) {
 }
   ngOnInit(): void {
     if (!this.tokenService.getToken()) {
@@ -27,7 +29,10 @@ export class AddEducationComponent implements OnInit {
 
 
   onCreate(): void {
-    const education = new Education(this.eduName, this.startDate, this.endDate, this.eduDescription);
+    const education = new Education(this.eduName, 
+      this.dateService.convertDateToUTC(this.startDate), 
+      this.dateService.convertDateToUTC(this.endDate), 
+      this.eduDescription);
 
     this.educationService.save(education).subscribe(
       {
